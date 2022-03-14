@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="./js/jquery-ui-1.13.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+            height: 3000px;
+        }
+        #scrollTop{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(160, 204, 255) ;
+            font-family: 'Jua', sans-serif;
+            text-align: center;
+            line-height: 50px;
+            color: rgb(255, 255, 255);
+            font-weight: normal;
+            position: fixed;
+            right: 3%;
+            bottom: 5%;
+            cursor: pointer;      
+        }
+        a:link{
+            color:white;
+        }
+        a:hover{
+            color:white;
+        }
+        a:visited{
+            color: white;
+        }
+        a{
+            display: block;
+            font-size: 25px;
+            line-height: 100px;
+            text-decoration: none;
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            right: 3%;
+            bottom: 5%;
+        }
+        /* #scrollTop:hover{
+            background-color: beige;
+            color: brown;
+        } */
+    </style>
+</head>
+<body>
+    <h1>스크롤 탑 이동</h1>
+    <aside id="scrollTop" data-bg="beige"><a href="#" data-bg="#rgb(255, 91, 27)" data-co="#rgb(187, 255, 227)">위로 ㄱㄱ</a></aside>
+    <script>
+        $("#scrollTop").click(function(){
+            console.log("click")
+            $("html, body").animate({scrollTop: 0}, 500);
+        });
+        // $(document).ready(function(){
+        //     $('aside').mouseover(function(){
+        //         $(this).css("backgroundColor","#ccc");
+        //     });
+        //     $('aside').mouseout(function(){
+        //         $(this).css("backgroundColor","rgb(160, 204, 255)");
+        //     });
+        // });
+        // 얘는 해봤더니 애니메이션이 없어서 css로 똑같은 거 가능하기에 패스
+        $menu = $("aside a");
+
+        $menu.hover(
+            function(){
+                var overColor = $(this).attr("data-bg")
+                var overColor1 = $(this).attr("data-co")
+                $(this).stop()
+                .animate({"color":overColor1 , "background-color":overColor  },200);
+            },
+            function(){
+            $(this).stop().animate({"background-color":"#rgb(160, 204, 255)", "color":"#ffffff"},200)
+            }
+        );
+        // $menu.hover(
+        //     function(){
+        //         var overColor1 = $(this).attr("data-co")
+        //         $(this).stop()
+        //         .animate({"color":overColor1 },200);
+        //     },
+        //     function(){
+        //     $(this).stop().animate({"color":"#ffffff"},200)
+        //     }
+        // );
+    </script>
+    <!--섹션외에 예외적인애들-->
+    <div>
+        <b><big>모르겠는 것들</big></b><br/>
+        1. 만지다보니 언더라인이 생겼는데 어쩌다 생긴건지 모르겠다.<br/>
+        데코레이션 텍스트가 작동을 안한다.<br/>
+        ----하다보니 또 됐다. 뭘까<br/>
+        2. 텍스트 색깔도 바꾸고 싶은데... 모르겠다.<br/>
+        ----얘도 오래 만지다보니 어케든 됐다.<br/>
+        3. data-bg가 따로 있는 태그 같은데 얘는 뭐지<br/>
+        ----그냥 별거 아닌듯 싶다.<br/>
+        4. $안에 this는 만능인가 자꾸 나오네 얘는 뭐지<br/>
+        5.attr는 뭘까 attribute 인가 모르겠다.<br/>
+        
+    </div>
+</body>
+</html>
